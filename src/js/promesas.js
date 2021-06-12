@@ -20,11 +20,23 @@ export const buscarHeroe = (id) => {
     //Dentro de la promesa se manda un callback
     return new Promise((resolve, reject) => {
         if (heroe) {
-            resolve(heroe);
+            setTimeout(() => resolve(heroe), 1000);
         } else {
             reject(`No existe un héroe con el id ${id}`);
         }
     });
+};
+
+//  ----------   Copia de la función anterior aquí se aplica async -----------------
+export const buscarHeroeAsync = async (id) => {
+    const heroe = heroes[id];
+
+    if (heroe) {
+        return heroe;
+    } else {
+        //Al usar Error manda más información de qué salió mal
+        throw `No existe un héroe con el id ${id}`;
+    }
 };
 
 const promesaLenta = new Promise((resolve, reject) => {
